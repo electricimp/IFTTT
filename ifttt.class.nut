@@ -3,14 +3,15 @@
 // http://opensource.org/licenses/MIT
 
 class IFTTT {
+    // Library version
+    static version = [1, 0, 0];
 
-    static VERSION = [1, 0, 0];
-
-    static TOO_MANY_VALUES_EXCEPTION = "IFTTT only supports up to 3 values per event";
+    // Errors
+    static ERR_TOO_MANY_VALUES = "IFTTT only supports up to 3 values per event";
 
     static API_URL = "https://maker.ifttt.com/trigger/%s/with/key/%s";
 
-    _key = null;
+    _key = null;    // User's secret key
 
     function constructor(key) {
         _key = key;
@@ -32,11 +33,15 @@ class IFTTT {
         // Add optional parameters to body.  IFTTT currently limits these to 3.
         local body = {};
         local firstArgument = vargv[0];
+
+        // If they passed an array:
         if(typeof firstArgument == "array") {
+            // Make sure no more than 3 values were passed
             if(firstArgument.len() > 3) {
-                throw TOO_MANY_VALUES_EXCEPTION;
+                throw ERR_TOO_MANY_VALUES;
             }
 
+            // Add each of the non-null parameters
             for(local i = 0; i < firstArgument.len(); i++) {
                 local value = firstArgument[i];
                 if(value != null) {
@@ -44,11 +49,15 @@ class IFTTT {
                 }
             }
         } else if(typeof firstArgument != "function"){
+            // If the passed anything else, sent it as value1
             body["value1"] <- firstArgument;
         }
 
+        // Create the request
         local request = http.post(url, headers, http.jsonencode(body));
+        // Build the callback
         local requestCallback = _requestCallbackFactory(userCallback);
+        // Send the request + invoke callback on completion
         request.sendasync(requestCallback);
     }
 
