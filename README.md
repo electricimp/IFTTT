@@ -25,7 +25,7 @@ ifttt <- IFTTT("<-- SECRET_KEY -->");
 
 Triggers an IFTTT event with no argument values.
 
-*For details on callback construction, see [sendEvent(*eventName, valueArray, [callback]*)](#sendeventeventname-valuearray-callback)).*
+*For details on callback construction, see [sendEvent(eventName, valueArray, [callback])](#sendeventeventname-valuearray-callback)).*
 
 ```squirrel
 // Trigger an event with no values and a callback
@@ -42,7 +42,7 @@ ifttt.trigger("something_happened", function(err, response) {
 
 Triggers an IFTTT event with one argument value.
 
-*For more details on the use of values and callback construction, see [sendEvent(*eventName, valueArray, [callback]*)](#sendeventeventname-valuearray-callback)).**
+*For more details on the use of values and callback construction, see [sendEvent(eventName, valueArray, [callback])](#sendeventeventname-valuearray-callback)).
 
 ```squirrel
 // Trigger an event with one value and a callback
