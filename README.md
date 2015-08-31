@@ -29,7 +29,7 @@ Triggers an IFTTT event with no argument values.
 
 ```squirrel
 // Trigger an event with no values and a callback
-ifttt.trigger("something_happened", function(err, response) {
+ifttt.sendEvent("something_happened", function(err, response) {
     if(err) {
         server.error(err);
         return;
@@ -46,7 +46,7 @@ Triggers an IFTTT event with one argument value.
 
 ```squirrel
 // Trigger an event with one value and a callback
-ifttt.trigger("something_happened", "red", function(err, response) {
+ifttt.sendEvent("something_happened", "red", function(err, response) {
     if(err) {
         server.error(err);
         return;
@@ -71,7 +71,7 @@ This method also optionally takes a callback that takes an *err* and a *response
 // value1: red
 // value2: **don't send**
 // value3: banana
-ifttt.trigger("something_happened", ["red", null, "banana"], function(err, response) {
+ifttt.sendEvent("something_happened", ["red", null, "banana"], function(err, response) {
     if(err) {
         server.error(err);
         return;
