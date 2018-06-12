@@ -4,7 +4,7 @@
 
 ## Class Usage ##
 
-The IFTTT class provides three methods to send events to your IFTTT Maker Channel: [with an eventName and no data](#sendeventeventname-callback), [with an eventName and a single peice of data](#sendeventeventname-value1-callback), and [with an eventName and an array containing up to three peices of data](#sendeventeventname-valuearray-callback).
+The IFTTT class provides three methods to send events to your IFTTT Maker Channel: [with an eventName and no data](#sendeventeventname-callback), [with an eventName and a single piece of data](#sendeventeventname-value1-callback), and [with an eventName and an array containing up to three peices of data](#sendeventeventname-valuearray-callback).
 
 ### Constructor: IFTTT(*secretKey*) ###
 
@@ -25,7 +25,7 @@ ifttt <- IFTTT("<-- SECRET_KEY -->");
 
 Triggers an IFTTT event with no argument values.
 
-*For details on callback construction, see [*sendEvent()*](#sendeventeventname-valuearray-callback)).*
+For details on callback construction, see [*sendEvent()*](#sendeventeventname-valuearray-callback)).
 
 ```squirrel
 // Trigger an event with no values and a callback
@@ -42,7 +42,7 @@ ifttt.sendEvent("something_happened", function(err, response) {
 
 Triggers an IFTTT event with one argument value.
 
-*For more details on the use of values and callback construction, see [sendEvent(eventName, valueArray, [callback])](#sendeventeventname-valuearray-callback)).
+For more details on the use of values and callback construction, see [*sendEvent()*](#sendeventeventname-valuearray-callback)).
 
 ```squirrel
 // Trigger an event with one value and a callback
